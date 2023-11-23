@@ -3,7 +3,8 @@
   "name": "Basic Extension",
   "version": "1.0",
   "description": "Basic Extension",
-  "host_permissions": ["https://github.com/*/*/pull/*"],
+  "permissions": ["activeTab", "scripting", "webNavigation"],
+  "host_permissions": ["https://github.com/"],
   "background": {
     "service_worker": "background.js"
   },

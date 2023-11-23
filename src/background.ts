@@ -1,6 +1,6 @@
-chrome.action.onClicked.addListener((tab) => {
+chrome.webNavigation.onHistoryStateUpdated.addListener((details) => {
   chrome.scripting.executeScript({
-    target: { tabId: tab.id || 0 },
-    files: ["scripts/content.js"]
+    target: { tabId: details.tabId },
+    files: ["./content.js"]
   });
 });
