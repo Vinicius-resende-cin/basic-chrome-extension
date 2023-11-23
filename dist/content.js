@@ -1,0 +1,1 @@
+(()=>{"use strict";alert(function(){const r=["You're doing great!","You're awesome!","You're a superstar!","You're amazing!","You're killing it!"];return r[Math.floor(Math.random()*r.length)]}())})();

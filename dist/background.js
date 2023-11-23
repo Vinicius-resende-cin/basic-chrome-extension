@@ -1,0 +1,1 @@
+(()=>{"use strict";chrome.action.onClicked.addListener((t=>{chrome.scripting.executeScript({target:{tabId:t.id||0},files:["scripts/content.js"]})}))})();
