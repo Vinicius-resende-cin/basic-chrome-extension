@@ -1,1 +1,1 @@
-(()=>{"use strict";chrome.webNavigation.onHistoryStateUpdated.addListener((t=>{chrome.scripting.executeScript({target:{tabId:t.tabId},files:["./content.js"]})}))})();
+(()=>{"use strict";chrome.webNavigation.onHistoryStateUpdated.addListener((t=>{console.log("Listener called at: "+t.url),chrome.scripting.executeScript({target:{tabId:t.tabId},files:["./content.js"]})}),{url:[{urlMatches:"^https:\\/\\/github\\.com\\/.+\\/.+\\/pull\\/\\d+\\/files$"}]})})();

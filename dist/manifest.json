@@ -5,11 +5,7 @@
   "description": "Basic Extension",
   "permissions": ["activeTab", "scripting", "webNavigation"],
   "host_permissions": ["https://github.com/"],
-  "content_scripts": [
-    {
-      "matches": ["https://github.com/*/*/pull/*"],
-      "js": ["content.js"],
-      "run_at": "document_end"
-    }
-  ]
+  "background": {
+    "service_worker": "background.js"
+  }
 }
