@@ -21,7 +21,7 @@
     "name": "Vinicius Resende Barbosa"
   },
   "scripts": {
-    "build": "webpack --config webpack.config.cjs"
+    "build": "tsc && webpack --config webpack.config.cjs"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.253",
