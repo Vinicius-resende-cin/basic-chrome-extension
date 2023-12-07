@@ -3,7 +3,7 @@
   "name": "Basic Extension",
   "version": "1.0",
   "description": "Basic Extension",
-  "permissions": ["activeTab", "scripting", "webNavigation"],
+  "permissions": ["activeTab", "scripting", "tabs"],
   "host_permissions": ["https://github.com/"],
   "background": {
     "service_worker": "background.js"
