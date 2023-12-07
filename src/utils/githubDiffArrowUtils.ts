@@ -49,7 +49,8 @@ export function drawArrow(
   fileDiff: Element,
   fromLine: number,
   toLine: number,
-  diffLength: number
+  diffLength: number,
+  color: string = "red"
 ): void {
   /*TODO: get the Y coodinate from the line Element, not the list index,
                             as the fileDiff can have revision comments in between lines */
@@ -71,8 +72,8 @@ export function drawArrow(
   const startHeadRadius = 2;
   const endHeadRadius = 4;
 
-  ctx.fillStyle = "red";
-  ctx.strokeStyle = "red";
+  ctx.fillStyle = color;
+  ctx.strokeStyle = color;
   ctx.lineWidth = 2;
 
   ctx.beginPath();

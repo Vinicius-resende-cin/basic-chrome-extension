@@ -37,7 +37,7 @@ export function insertCanvas(fileDiff) {
  * @param toLine - The ending line number.
  * @param diffLength - The total number of lines in the diff.
  */
-export function drawArrow(fileDiff, fromLine, toLine, diffLength) {
+export function drawArrow(fileDiff, fromLine, toLine, diffLength, color = "red") {
     /*TODO: get the Y coodinate from the line Element, not the list index,
                               as the fileDiff can have revision comments in between lines */
     const canvas = insertCanvas(fileDiff);
@@ -53,8 +53,8 @@ export function drawArrow(fileDiff, fromLine, toLine, diffLength) {
     const leftSpace = 11;
     const startHeadRadius = 2;
     const endHeadRadius = 4;
-    ctx.fillStyle = "red";
-    ctx.strokeStyle = "red";
+    ctx.fillStyle = color;
+    ctx.strokeStyle = color;
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.arc(leftSpace, fromY, startHeadRadius, 0, 2 * Math.PI);
