@@ -2,6 +2,7 @@ function createPopup(popupHTML) {
     const separator = document.createElement("span");
     separator.style.padding = "0 8px 0 0";
     const popUpContainer = document.createElement("span");
+    popUpContainer.id = "dependency-alert-popup-container";
     popUpContainer.style.border = "1px solid black";
     popUpContainer.style.position = "relative";
     popUpContainer.style.display = "table-cell";
@@ -36,6 +37,8 @@ function createPopup(popupHTML) {
     return { popUpContainer, popoverButton, popover };
 }
 export function insertPopup(element, popupHTML) {
+    if (element.querySelector("#dependency-alert-popup-container") !== null)
+        return;
     const { popUpContainer, popoverButton, popover } = createPopup(popupHTML);
     element.appendChild(popUpContainer);
     popoverButton.addEventListener("click", () => {
