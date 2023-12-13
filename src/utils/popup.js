@@ -1,3 +1,4 @@
+import { computePosition, flip, offset, autoUpdate } from "@floating-ui/dom";
 function createPopup(popupHTML) {
     const separator = document.createElement("span");
     separator.style.padding = "0 8px 0 0";
@@ -17,15 +18,12 @@ function createPopup(popupHTML) {
     popoverButton.style.fontSize = "10px";
     popoverButton.style.backgroundColor = "red";
     const popover = document.createElement("div");
-    popover.style.inset = "unset";
     popover.style.position = "absolute";
     popover.style.margin = "0px";
     popover.style.padding = "0 5px 0 5px";
-    popover.style.width = "fit-content";
-    popover.style.right = "100%";
-    popover.style.top = "50%";
-    popover.style.transform = "translateY(-50%)";
-    popover.style.visibility = "hidden";
+    popover.style.width = "max-content";
+    popover.style.left = "0";
+    popover.style.top = "0";
     popover.innerHTML = popupHTML;
     popover.style.whiteSpace = "nowrap";
     popover.style.border = "1px solid black";
@@ -42,7 +40,18 @@ export function insertPopup(element, popupHTML) {
     const { popUpContainer, popoverButton, popover } = createPopup(popupHTML);
     element.appendChild(popUpContainer);
     popoverButton.addEventListener("click", () => {
-        const newVisibility = popover.style.visibility === "visible" ? "hidden" : "visible";
-        popover.style.visibility = newVisibility;
+        popover.style.visibility = "visible";
     });
+    const updatePosition = () => {
+        computePosition(popUpContainer, popover, {
+            placement: "left",
+            middleware: [offset(10), flip()]
+        }).then(({ x, y }) => {
+            Object.assign(popover.style, {
+                left: `${x}px`,
+                top: `${y}px`
+            });
+        });
+    };
+    const clean = autoUpdate(popUpContainer, popover, updatePosition);
 }
